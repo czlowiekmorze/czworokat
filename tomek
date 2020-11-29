@@ -47,10 +47,11 @@ namespace czworokat
         {
             h = wysokosc;
         }
-    }
+    
     public override double Pole()
     {
         return (x + y) / 2 * h;
+    }
     }
     class Program
     {

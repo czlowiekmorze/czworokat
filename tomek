@@ -1,0 +1,70 @@
+using System;
+
+namespace czworokat
+{
+    public abstract class Czworokat {
+        protected int x;
+        protected int y;
+
+        public Czworokat(int bok_a, int bok_b)
+        {
+            x = bok_a;
+            y = bok_b;
+        }
+        public abstract double Pole();
+        
+    }
+    
+    public class Kwadrat : Czworokat
+    {
+        public Kwadrat(int bok_a):base(bok_a, bok_a)
+        { }
+            public override double Pole()
+        {
+            return x * x; // dziala tez dla x *y
+        }
+    
+
+    }
+
+    public class Prostokat : Czworokat
+    {
+        public Prostokat(int bok_a,int bok_b) : base(bok_a, bok_b)
+        { }
+        public override double Pole()
+        {
+            return x * y; //nie  dziala tez dla x *x
+        }
+
+
+    }
+
+    public class Trapez :Czworokat
+        
+    {
+        protected double h;
+        public Trapez(int podst_a, int podst_b, double wysokosc): base(podst_a, podst_b)
+        {
+            h = wysokosc;
+        }
+    }
+    public override double Pole()
+    {
+        return (x + y) / 2 * h;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Kwadrat k1 = new Kwadrat(3);
+            Console.WriteLine(k1.Pole());
+
+            Prostokat p1 = new Prostokat(2, 3);
+            Console.WriteLine(p1.Pole());
+
+            Trapez t1 = new Trapez(7, 7, 7);
+            Console.WriteLine(t1.Pole());
+            Console.ReadKey();
+        }
+    }
+}
